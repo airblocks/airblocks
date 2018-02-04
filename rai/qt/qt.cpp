@@ -58,7 +58,7 @@ window (new QWidget),
 layout (new QVBoxLayout),
 self_layout (new QHBoxLayout),
 self_window (new QWidget),
-your_account_label (new QLabel ("Your RaiBlocks account:")),
+your_account_label (new QLabel ("Your AirBlocks account:")),
 account_window (new QWidget),
 account_layout (new QHBoxLayout),
 account_text (new QLineEdit),
@@ -701,7 +701,7 @@ wallet (wallet_a)
 			show_line_ok (*account_line);
 			this->history.refresh ();
 			auto balance (this->wallet.node.balance_pending (account));
-			auto final_text (std::string ("Balance (XRB): ") + wallet.format_balance (balance.first));
+			auto final_text (std::string ("Balance (XAR): ") + wallet.format_balance (balance.first));
 			if (!balance.second.is_zero ())
 			{
 				final_text += "\nPending: " + wallet.format_balance (balance.second);
@@ -1264,14 +1264,14 @@ void rai_qt::wallet::change_rendering_ratio (rai::uint128_t const & rendering_ra
 std::string rai_qt::wallet::format_balance (rai::uint128_t const & balance) const
 {
 	auto balance_str = rai::amount (balance).format_balance (rendering_ratio, 2, true, std::locale (""));
-	auto unit = std::string ("XRB");
+	auto unit = std::string ("XAR");
 	if (rendering_ratio == rai::kxrb_ratio)
 	{
-		unit = std::string ("kxrb");
+		unit = std::string ("kxar");
 	}
 	else if (rendering_ratio == rai::xrb_ratio)
 	{
-		unit = std::string ("xrb");
+		unit = std::string ("xar");
 	}
 	return balance_str + " " + unit;
 }
@@ -1546,9 +1546,9 @@ scale_window (new QWidget),
 scale_layout (new QHBoxLayout),
 scale_label (new QLabel ("Scale:")),
 ratio_group (new QButtonGroup),
-mrai (new QRadioButton ("Mxrb")),
-krai (new QRadioButton ("kxrb")),
-rai (new QRadioButton ("xrb")),
+mrai (new QRadioButton ("Mxar")),
+krai (new QRadioButton ("kxar")),
+rai (new QRadioButton ("xar")),
 back (new QPushButton ("Back")),
 ledger_window (new QWidget),
 ledger_layout (new QVBoxLayout),
